@@ -56,6 +56,7 @@ size_t prScheduler_addTask(prScheduler *sch, prTask task)
     sch->tasks[sch->count] = task; 
     sch->tasks[sch->count].id = _id;
     sch->tasks[sch->count].target = sch->tick + task.target;
+    __prScheduler_buildMinHeap(sch, sch->count);
     ++sch->count;
     return _id++;
 }

@@ -60,4 +60,7 @@ void prScheduler_destroy(prScheduler *sch);
 int prScheduler_init(prScheduler *sch, size_t size);
 void prScheduler_clear(prScheduler *sch);
 
+size_t prScheduler_addTask(prScheduler *sch, prTask task);
+prTask prTask_create(prHandler handler, void *data, tick delay, tick interval);
+
 #endif /* PROPHECY_H */
