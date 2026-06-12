@@ -4,7 +4,12 @@
 ## File description:
 ## Makefile
 ##
-SRC =   src/
+SRC =   src/scheduler/scheduler_create.c \
+		src/scheduler/scheduler_destroy.c \
+		src/scheduler/scheduler_init.c \
+		src/scheduler/scheduler_clear.c \
+		src/scheduler/scheduler_addTask.c \
+		src/task/task_create.c \
 
 OBJ =   $(SRC:.c=.o)
 

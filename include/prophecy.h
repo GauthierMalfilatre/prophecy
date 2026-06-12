@@ -6,7 +6,7 @@
 */
 #ifndef PROPHECY_H
     #define PROPHECY_H
-    #include <cstdint>
+    #include <stdint.h>
     #include <stddef.h>
 
 typedef void (*prHandler)(void *, void *);
@@ -31,7 +31,7 @@ typedef struct prophecy_task_s {
     prHandler  handler;   //!< The handler (callback)
     void      *data;      //!< The data (payload) to give to the handler
     tick       interval;  //!< The interval (0 if ponctual, > 0 else)
-    tick       delay;     //!< The tick remainings.
+    tick       target;     //!< The tick remainings.
 
 } prTask;
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,5 +53,14 @@ typedef struct prophecy_scheduler_s {
 
 } prScheduler;
 ///////////////////////////////////////////////////////////////////////////////
+
+// TODO: Documention
+prScheduler *prScheduler_create(size_t size);
+void prScheduler_destroy(prScheduler *sch);
+int prScheduler_init(prScheduler *sch, size_t size);
+void prScheduler_clear(prScheduler *sch);
+
+size_t prScheduler_addTask(prScheduler *sch, prTask task);
+prTask prTask_create(prHandler handler, void *data, tick delay, tick interval);
 
 #endif /* PROPHECY_H */
