@@ -1,0 +1,25 @@
+# IDE Folders
+.vscode/
+.idea/
+
+# Compilation artifacts
+compile_commands.json
+
+# Temp files
+*.o
+*.a
+*.so
+
+# Binary
+libargot.a
+libargot.so
+
+# Cache
+.cache
+
+# Build
+Release/
+Debug/
+
+# Test
+test
