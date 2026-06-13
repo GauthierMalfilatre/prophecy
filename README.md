@@ -6,7 +6,6 @@ Prophecy is a lightweight, efficient task scheduler library for C applications. 
 
 - **Efficient Scheduling**: Uses a min-heap to keep the next upcoming task at the top.
 - **One-time & Periodic Tasks**: Support for both punctual and recurring tasks.
-- **Payload Support**: Attach custom data context to each task.
 - **Lightweight**: Zero-dependency library, easy to integrate.
 - **Multiple Build Systems**: Support for both CMake and Makefile.
 
