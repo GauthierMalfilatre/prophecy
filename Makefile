@@ -9,7 +9,13 @@ SRC =   src/scheduler/scheduler_create.c \
 		src/scheduler/scheduler_init.c \
 		src/scheduler/scheduler_clear.c \
 		src/scheduler/scheduler_addTask.c \
+		src/scheduler/scheduler_update.c \
+		\
 		src/task/task_create.c \
+		\
+		src/minheap/minheap_add.c \
+		src/minheap/minheap_remove.c \
+		src/minheap/minheap_swap.c \
 
 OBJ =   $(SRC:.c=.o)
 

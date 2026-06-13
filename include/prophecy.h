@@ -18,6 +18,7 @@ typedef uint64_t tick;
 ** https://www.geeksforgeeks.org/c/c-program-to-implement-min-heap/
 */
 
+// TODO: Add a cleanup function ptr.
 ///////////////////////////////////////////////////////////////////////////////
 /**
  * @struct prophecy_task_s
@@ -62,5 +63,7 @@ void prScheduler_clear(prScheduler *sch);
 
 size_t prScheduler_addTask(prScheduler *sch, prTask task);
 prTask prTask_create(prHandler handler, void *data, tick delay, tick interval);
+
+size_t prScheduler_tick(prScheduler *sch, void *context);
 
 #endif /* PROPHECY_H */
