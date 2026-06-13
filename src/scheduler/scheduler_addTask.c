@@ -27,6 +27,9 @@ size_t prScheduler_addTask(prScheduler *sch, prTask task)
 {
     static size_t _id = 1;
 
+    if (!sch) {
+        return 0;
+    }
     if (sch->count >= sch->size) {
         if (__prScheduler_ensureCapacity(sch) == -1) {
             return 0;

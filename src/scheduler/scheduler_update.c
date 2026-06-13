@@ -13,6 +13,9 @@ size_t prScheduler_tick(prScheduler *sch, void *context)
     size_t done = 0;
     prTask ctask;
 
+    if (!sch) {
+        return 0;
+    }
     sch->tick++;
     while (sch->count > 0 && sch->tasks[0].target <= sch->tick) {
         ctask = sch->tasks[0];
