@@ -6,7 +6,12 @@
 */
 #include "prophecy.h"
 
-inline prTask prTask_create(prHandler handler, void *data, tick delay, tick interval)
+inline prTask prTask_create(
+    prHandler handler,
+    prTaskData data,
+    tick delay,
+    tick interval
+)
 {
     return (prTask){
         .id = 0,

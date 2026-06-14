@@ -11,6 +11,7 @@
     #include <stdbool.h>
 
 typedef bool (*prHandler)(void *, void *);
+typedef void (*prClearer)(void *);
 typedef uint64_t tick;
 
 /*
@@ -18,6 +19,13 @@ typedef uint64_t tick;
 ** in order to optimize ressources and checking.
 ** https://www.geeksforgeeks.org/c/c-program-to-implement-min-heap/
 */
+
+typedef struct prophecy_task_data_s {
+
+    void      *data;
+    prClearer  clearer;
+
+} prTaskData;
 
 // TODO: Add a cleanup function ptr.
 ///////////////////////////////////////////////////////////////////////////////
@@ -31,7 +39,7 @@ typedef struct prophecy_task_s {
 
     size_t     id;        //!< The id of the tasks
     prHandler  handler;   //!< The handler (callback)
-    void      *data;      //!< The data (payload) to give to the handler
+    prTaskData data;      //!< The task data
     tick       interval;  //!< The interval (0 if ponctual, > 0 else)
     tick       target;     //!< The tick remainings.
 
@@ -63,7 +71,7 @@ int prScheduler_init(prScheduler *sch, size_t size);
 void prScheduler_clear(prScheduler *sch);
 
 size_t prScheduler_addTask(prScheduler *sch, prTask task);
-prTask prTask_create(prHandler handler, void *data, tick delay, tick interval);
+prTask prTask_create(prHandler handler, prTaskData data, tick delay, tick interval);
 
 size_t prScheduler_tick(prScheduler *sch, void *context);
 
