@@ -12,6 +12,7 @@ size_t prScheduler_tick(prScheduler *sch, void *context)
 {
     size_t done = 0;
     prTask ctask;
+    bool r;
 
     if (!sch) {
         return 0;
@@ -20,9 +21,9 @@ size_t prScheduler_tick(prScheduler *sch, void *context)
     while (sch->count > 0 && sch->tasks[0].target <= sch->tick) {
         ctask = sch->tasks[0];
         prMinHeap_remove(sch, 0);
-        ctask.handler(context, ctask.data);
+        r = ctask.handler(context, ctask.data);
         done++;
-        if (ctask.interval > 0) {
+        if (r && ctask.interval > 0) {
             ctask.target = ctask.interval;
             prScheduler_addTask(sch, ctask);
         }

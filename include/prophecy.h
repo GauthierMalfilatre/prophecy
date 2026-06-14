@@ -8,8 +8,9 @@
     #define PROPHECY_H
     #include <stdint.h>
     #include <stddef.h>
+    #include <stdbool.h>
 
-typedef void (*prHandler)(void *, void *);
+typedef bool (*prHandler)(void *, void *);
 typedef uint64_t tick;
 
 /*
