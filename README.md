@@ -38,7 +38,7 @@ Here is a simple example of how to use Prophecy:
 #include <unistd.h>
 
 // Your task handler
-static void my_handler(void *context, void *data)
+static bool my_handler(void *context, void *data)
 {
     printf("Task executed with data: %ld\n", (long int)data);
 }
@@ -61,7 +61,7 @@ int main(void)
     }
 
     prScheduler_destroy(sch);
-    return 0;
+    return true;
 }
 ```
 
